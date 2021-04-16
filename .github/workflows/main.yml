@@ -19,4 +19,6 @@ jobs:
         with:
           dotnet-version: 6.0.100-preview.3.21202.5
       - run: dotnet build
+      - run: dotnet test
+      - run: dotnet publish
       
