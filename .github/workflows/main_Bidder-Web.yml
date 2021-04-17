@@ -1,6 +1,3 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
 name: Build and deploy ASP.Net Core app to Azure Web App - Bidder-Web
 
 on:
@@ -23,9 +20,12 @@ jobs:
 
     - name: Build with dotnet
       run: dotnet build --configuration Release
+      
+    - name: Run tests
+      run: dotnet test Bidder.Web.Test
 
     - name: dotnet publish
-      run: dotnet publish Bidder.Web.Hosted -c Release -o ${{env.DOTNET_ROOT}}/myapp
+      run: dotnet publish Bidder.Web -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
     - name: Upload artifact for deployment job
       uses: actions/upload-artifact@v2
